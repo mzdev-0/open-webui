@@ -4,8 +4,6 @@ ollama:
 pipelines:
   enabled: false
 
-clusterDomain: ghostfrnd.co
-
 image:
   tag: "latest"
 
