@@ -1,0 +1,29 @@
+ollama:
+  enabled: false
+
+pipelines:
+  enabled: false
+
+clusterDomain: ghostfrnd.co
+
+image:
+  tag: "latest"
+
+ingress:
+  enabled: true
+  class: "traefik"
+  host: "ai.ghostfrnd.co"
+  tls: true
+  existingSecret: open-webui-tls-certificate
+
+persistence:
+  size: 50Gi
+  accessModes:
+    - ReadWriteMany
+
+extraEnvVars:
+  - name: OPENAI_API_KEY
+    value: "TBD"
+  - name: OPENROUTER_API_KEY
+    value: "TBD"
+
