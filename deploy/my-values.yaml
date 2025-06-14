@@ -19,7 +19,7 @@ ingress:
 persistence:
   size: 50Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
 
 
 extraEnvVars:
