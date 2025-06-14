@@ -4,7 +4,7 @@ ollama:
 pipelines:
   enabled: false
 
-clusterDomain: ghostfrnd.co
+#clusterDomain: ghostfrnd.co
 
 image:
   tag: "latest"
@@ -14,16 +14,29 @@ ingress:
   class: "traefik"
   host: "ai.ghostfrnd.co"
   tls: true
-  existingSecret: open-webui-tls-certificate
+  existingSecret: openwebui-tls-secret
 
 persistence:
   size: 50Gi
   accessModes:
     - ReadWriteMany
 
+
 extraEnvVars:
-  - name: OPENAI_API_KEY
-    value: "TBD"
+  # -- Default API key value for Pipelines. Should be updated in a production deployment, or be changed to the required API key if not using Pipelines
   - name: OPENROUTER_API_KEY
-    value: "TBD"
+    valueFrom:
+      secretKeyRef:
+        name: openrouter-api-key
+        key: api-key
+  # - name: OPENAI_API_KEY
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: openai-api-key
+  #       key: api-key
+  # - name: OLLAMA_DEBUG
+  #   value: "1"
+
+# -- Configure pod security context
+# ref: <https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-containe>
 
