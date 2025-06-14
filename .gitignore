@@ -1,3 +1,7 @@
+#k8s deployment secrets
+/deploy/openrouter-secret.yaml
+
+
 .DS_Store
 node_modules
 /build
